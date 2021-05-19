@@ -3,7 +3,7 @@ services:
   rails:
     build:
       context: .
-      dockerfile: /Dockerfile
+      dockerfile: Dockerfile
     environment:
       RAILS_ENV: "development"
       MYSQL_USER: "root"
@@ -37,6 +37,6 @@ services:
     ports:
       - "33306:3306"
 
-  volumes:
-    bundle_data:
-    mysql_data:
+volumes:
+  bundle_data:
+  mysql_data:
