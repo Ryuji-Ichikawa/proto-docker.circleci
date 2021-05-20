@@ -1,12 +1,12 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/rails.circleci
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4 
           DATABASE_URL: mysql://mysql:password@localhost:5432/protospace-35547_test
           RAILS_ENV: test
       - image: circleci/mysql:5.6.51
@@ -20,7 +20,7 @@ jobs:
           name: Bundlerをinstall
           command: |
             gem update --system
-            gem install bundler
+            gem install bundler -v 2.1.4
       - run:
           name: Bundle Install
           command: bundle check || bundle install
