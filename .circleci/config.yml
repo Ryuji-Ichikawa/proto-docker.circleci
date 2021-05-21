@@ -4,7 +4,6 @@ orbs:
 
 jobs:
   build:
-    working_directory: ~/protospace-35547
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
@@ -28,7 +27,7 @@ jobs:
           name: Bundlerをinstall
           command: |
             gem update --system
-            gem install bundler
+            gem install bundler -v 2.1.4
       - run:
           name: Bundle Install
           command: bundle check || bundle install
@@ -43,9 +42,9 @@ jobs:
       - run:
           name: Yarnをinstall
           command: yarn install --cache-folder ~/.cache/yarn
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
+      # - run:
+      #     name: Wait for DB
+      #     command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
       - run:
           name: Database setup
           command: bin/rails db:create db:schema:load --trace
