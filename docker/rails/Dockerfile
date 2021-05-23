@@ -11,7 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
 RUN gem install bundler
 RUN bundle install
 COPY . /protospace-35547
-COPY entrypoint.sh /usr/bin/
+COPY ./docker/rails/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 8000
