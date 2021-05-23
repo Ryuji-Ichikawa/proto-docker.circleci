@@ -3,7 +3,7 @@ services:
   rails:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/rails/Dockerfile
     environment:
       RAILS_ENV: "development"
       MYSQL_USER: "root"
@@ -22,8 +22,8 @@ services:
 
   mysql:
     build:
-      context: ./mysql
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: "example_root_password"
       MYSQL_USER: "sample_user"
